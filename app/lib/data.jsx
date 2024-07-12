@@ -1,10 +1,10 @@
 import { User } from "./models";
 import { connect2DB } from "./utils";
 
-export const fetchingUsers = async () => {
+export const fetchingUsers = async (q) => {
   try {
     connect2DB();
-    const  users = await User.find();
+    const  users = await User.find({});
     return users
     
   } catch (error) {

@@ -1,62 +1,13 @@
 import Link from "next/link";
-import { format } from "date-fns";
 import { FiUserPlus, FiEye, FiTrash } from "react-icons/fi";
 import Search from "../../ui/dashboard/search/search";
 import Pagination from "../../ui/dashboard/pagination/pagination";
 import { fetchingUsers } from "../../lib/data";
 
-// const users = [
-//   {
-//     id: 1,
-//     name: "Hart Hagerty",
-//     email: "hagerty@gmail.com",
-//     created: new Date(2024, 6, 24),
-//     role: "Admin",
-//     status: "active",
-//     image: "https://img.daisyui.com/tailwind-css-component-profile-2@56w.png",
-//   },
-//   {
-//     id: 2,
-//     name: "Alice Johnson",
-//     email: "alice.johnson@gmail.com",
-//     created: new Date(2023, 10, 15),
-//     role: "User",
-//     status: "inactive",
-//     image: "https://randomuser.me/api/portraits/women/1.jpg",
-//   },
-//   {
-//     id: 3,
-//     name: "John Doe",
-//     email: "john.doe@example.com",
-//     created: new Date(2022, 3, 5),
-//     role: "Admin",
-//     status: "active",
-//     image: "https://randomuser.me/api/portraits/men/1.jpg",
-//   },
-//   {
-//     id: 4,
-//     name: "Emily Smith",
-//     email: "emily.smith@example.com",
-//     created: new Date(2023, 7, 12),
-//     role: "User",
-//     status: "active",
-//     image: "https://randomuser.me/api/portraits/women/2.jpg",
-//   },
-//   {
-//     id: 5,
-//     name: "Michael Brown",
-//     email: "michael.brown@example.com",
-//     created: new Date(2024, 1, 28),
-//     role: "Admin",
-//     status: "inactive",
-//     image: "https://randomuser.me/api/portraits/men/2.jpg",
-//   },
-// ];
+const UsersPage =  async ({searchParams}) => {
+  const q = searchParams?.query || "";
 
-const UsersPage =  async ({searchParam}) => {
-  const q = searchParams
-
-  const users = await fetchingUsers()
+  const users = await fetchingUsers(q);
   console.log(users);
   
   return (
