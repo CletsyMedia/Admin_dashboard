@@ -3,6 +3,7 @@ import { format } from "date-fns";
 import { FiUserPlus, FiEye, FiTrash } from "react-icons/fi";
 import Search from "../../ui/dashboard/search/search";
 import Pagination from "../../ui/dashboard/pagination/pagination";
+import { fetchingUsers } from "../../lib/data";
 
 const usersData = [
   {
@@ -52,9 +53,12 @@ const usersData = [
   },
 ];
 
-const UsersPage = () => {
+const UsersPage =  async () => {
   const formatDate = (date) => format(date, "MMM d, yyyy");
 
+  const users = await fetchingUsers()
+  console.log(users);
+  
   return (
     <div className="h-screen w-full">
       <div className="mt-2 bg-bgSoft p-5 rounded-xl">

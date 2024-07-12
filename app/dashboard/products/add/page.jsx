@@ -1,9 +1,6 @@
 import React from "react";
-import { fetchingUsers } from "../../../lib/data";
 
-const AddUser = async () => {
-  const users = await fetchingUsers();
-  console.log(users);
+const AddUser = () => {
   return (
     <div className="h-screen w-full py-4">
       <div className="bg-bgSoft p-8 rounded-lg shadow-lg w-full ">

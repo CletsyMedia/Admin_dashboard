@@ -1,7 +1,6 @@
-import { min } from "date-fns"
 import mongoose from "mongoose"
 
-const userSchema = new mongoose.Scheme({
+const userSchema = new mongoose.Schema({
 username:{
   type:String,
   required:true,
@@ -37,7 +36,7 @@ address:{
 },
 }, {timestamps: true})
 
-const productSchema = new mongoose.Scheme({
+const productSchema = new mongoose.Schema({
   title:{
     type:String,
     required:true,

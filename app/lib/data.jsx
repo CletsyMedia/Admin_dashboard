@@ -1,13 +1,13 @@
-import { User } from "./models";
+import { connect2DB, User } from "./models";
 
 export const fetchingUsers = async () => {
   try {
-    connect2DB()
-    const  users = await User.find();
-    return users
-    
+    await connect2DB(); // Ensure database connection is established
+
+    const users = await User.find();
+    return users;
   } catch (error) {
     console.error("Error fetching user data", error);
-    throw new Error("Failed to fetch user data")
+    throw new Error("Failed to fetch user data");
   }
 };

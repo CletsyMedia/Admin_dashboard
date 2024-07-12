@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 export const connect2DB = async () =>{
   // This to always keep the connection alive
-  const connection = {}
+  const connection = {};
   try {
     if (connection.isConnected) return;
     const db = await mongoose.connect(process.env.ALXMONGO);
