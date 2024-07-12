@@ -74,3 +74,5 @@ const productSchema = new mongoose.Scheme({
   // Exporting models
   // Check also if user exist if not create
   export const User = mongoose.models.User || mongoose.model("User", userSchema)
+  // Check also if Product exist if not create
+  export const Product = mongoose.models.Product || mongoose.model("Product", productSchema)
