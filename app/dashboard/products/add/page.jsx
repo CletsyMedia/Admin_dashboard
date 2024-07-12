@@ -19,8 +19,8 @@ const AddUser = () => {
             className="select bg-[#2e374a]"
           >
             <option value="general" disabled hidden selected>Choose a category</option>
-            <option value="watches">Watches</option>
-            <option value="wallet">Wallet</option>
+            <option value="kitchen">Kitchen</option>
+            <option value="computers">Computers</option>
             <option value="desk">Desk</option>
             <option value="plant">Plant</option>
           </select>

@@ -133,7 +133,7 @@ const ProductsPage = () => {
               <td>{product.stock}</td>
               <td>
                 <div className="flex gap-2">
-                  <Link href="/">
+                  <Link href="/dashboard/products/id">
                     <button
                       className="flex items-center justify-center px-3 py-1 text-blue-500 border border-blue-500 rounded-md hover:bg-blue-500 hover:text-white"
                       title="View"
