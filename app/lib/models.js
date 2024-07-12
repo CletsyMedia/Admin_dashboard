@@ -1,7 +1,7 @@
 import { min } from "date-fns"
 import mongoose from "mongoose"
 
-const userScheme = new mongoose.Scheme({
+const userSchema = new mongoose.Scheme({
 username:{
   type:String,
   required:true,
@@ -37,7 +37,7 @@ address:{
 },
 }, {timestamps: true})
 
-const productScheme = new mongoose.Scheme({
+const productSchema = new mongoose.Scheme({
   title:{
     type:String,
     required:true,
@@ -60,10 +60,6 @@ const productScheme = new mongoose.Scheme({
   img:{
     type:String,
   },
-  isAdmin:{
-    type:Boolean,
-    default:false,
-  },
   color:{
     type:String,
   },
@@ -74,3 +70,7 @@ const productScheme = new mongoose.Scheme({
     type:String,
   },
   }, {timestamps: true})
+
+  // Exporting models
+  // Check also if user exist if not create
+  export const User = mongoose.models.User || mongoose.model("User", userSchema)
