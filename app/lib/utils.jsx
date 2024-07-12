@@ -4,8 +4,8 @@ export const connect2DB = async () =>{
   // This to always keep the connection alive
   const connection = {}
   try {
-    if(connection.isConnected) return;
-    await mongoose.connect(process.env.ALXMONGO);
+    if (connection.isConnected) return;
+    const db = await mongoose.connect(process.env.ALXMONGO);
     connection.isConnected = db.connection[0].readyState
     console.log("Connected to MongoDB");
   } catch (error) {
