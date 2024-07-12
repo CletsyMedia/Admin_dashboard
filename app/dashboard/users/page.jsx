@@ -5,7 +5,7 @@ import Pagination from "../../ui/dashboard/pagination/pagination";
 import { fetchingUsers } from "../../lib/data";
 
 const UsersPage =  async ({searchParams}) => {
-  const q = searchParams?.query || "";
+  const q = searchParams?.q || "";
 
   const users = await fetchingUsers(q);
   console.log(users);

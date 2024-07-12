@@ -8,10 +8,14 @@ const Search = ({ placeholder }) => {
   const pathname = usePathname();
   console.log(searchParams);
   console.log(pathname);
-  const params = new URLSearchParams();
 
   const handleSearch = (e) => {
-    params.set("q", e.target.value);
+    const params = new URLSearchParams();
+    if (e.target.value) {
+      params.set("q", e.target.value);
+    }else{
+      params.delete("q");
+    }
     replace(`${pathname}?${params}`);
   };
 
