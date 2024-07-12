@@ -9,7 +9,7 @@ username:{
   max:25,
 },
 email:{
-  type:String,
+  type:String, 
   required:true,
   unique:true,
 },
