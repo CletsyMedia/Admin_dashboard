@@ -5,56 +5,56 @@ import Search from "../../ui/dashboard/search/search";
 import Pagination from "../../ui/dashboard/pagination/pagination";
 import { fetchingUsers } from "../../lib/data";
 
-const usersData = [
-  {
-    id: 1,
-    name: "Hart Hagerty",
-    email: "hagerty@gmail.com",
-    created: new Date(2024, 6, 24),
-    role: "Admin",
-    status: "active",
-    image: "https://img.daisyui.com/tailwind-css-component-profile-2@56w.png",
-  },
-  {
-    id: 2,
-    name: "Alice Johnson",
-    email: "alice.johnson@example.com",
-    created: new Date(2023, 10, 15),
-    role: "User",
-    status: "inactive",
-    image: "https://randomuser.me/api/portraits/women/1.jpg",
-  },
-  {
-    id: 3,
-    name: "John Doe",
-    email: "john.doe@example.com",
-    created: new Date(2022, 3, 5),
-    role: "Admin",
-    status: "active",
-    image: "https://randomuser.me/api/portraits/men/1.jpg",
-  },
-  {
-    id: 4,
-    name: "Emily Smith",
-    email: "emily.smith@example.com",
-    created: new Date(2023, 7, 12),
-    role: "User",
-    status: "active",
-    image: "https://randomuser.me/api/portraits/women/2.jpg",
-  },
-  {
-    id: 5,
-    name: "Michael Brown",
-    email: "michael.brown@example.com",
-    created: new Date(2024, 1, 28),
-    role: "Admin",
-    status: "inactive",
-    image: "https://randomuser.me/api/portraits/men/2.jpg",
-  },
-];
+// const users = [
+//   {
+//     id: 1,
+//     name: "Hart Hagerty",
+//     email: "hagerty@gmail.com",
+//     created: new Date(2024, 6, 24),
+//     role: "Admin",
+//     status: "active",
+//     image: "https://img.daisyui.com/tailwind-css-component-profile-2@56w.png",
+//   },
+//   {
+//     id: 2,
+//     name: "Alice Johnson",
+//     email: "alice.johnson@gmail.com",
+//     created: new Date(2023, 10, 15),
+//     role: "User",
+//     status: "inactive",
+//     image: "https://randomuser.me/api/portraits/women/1.jpg",
+//   },
+//   {
+//     id: 3,
+//     name: "John Doe",
+//     email: "john.doe@example.com",
+//     created: new Date(2022, 3, 5),
+//     role: "Admin",
+//     status: "active",
+//     image: "https://randomuser.me/api/portraits/men/1.jpg",
+//   },
+//   {
+//     id: 4,
+//     name: "Emily Smith",
+//     email: "emily.smith@example.com",
+//     created: new Date(2023, 7, 12),
+//     role: "User",
+//     status: "active",
+//     image: "https://randomuser.me/api/portraits/women/2.jpg",
+//   },
+//   {
+//     id: 5,
+//     name: "Michael Brown",
+//     email: "michael.brown@example.com",
+//     created: new Date(2024, 1, 28),
+//     role: "Admin",
+//     status: "inactive",
+//     image: "https://randomuser.me/api/portraits/men/2.jpg",
+//   },
+// ];
 
-const UsersPage =  async () => {
-  const formatDate = (date) => format(date, "MMM d, yyyy");
+const UsersPage =  async ({searchParam}) => {
+  const q = searchParams
 
   const users = await fetchingUsers()
   console.log(users);
@@ -92,7 +92,7 @@ const UsersPage =  async () => {
           </tr>
         </thead>
         <tbody>
-          {usersData.map((user) => (
+          {users.map((user) => (
             <tr key={user.id}>
               <td>
                 <label htmlFor={`checkbox${user.id}`}>
@@ -107,21 +107,21 @@ const UsersPage =  async () => {
                 <div className="flex items-center gap-3">
                   <div className="avatar">
                     <div className="mask mask-circle h-12 w-12">
-                      <img src={user.image} alt="Avatar" />
+                      <img src={user.img || "/noavatar.png"} alt="Avatar" />
                     </div>
                   </div>
                   <div>
-                    <div className="font-bold">{user.name}</div>
+                    <div className="font-bold">{user.username}</div>
                   </div>
                 </div>
               </td>
               <td>{user.email}</td>
-              <td>{formatDate(user.created)}</td>
-              <td>{user.role}</td>
-              <td>{user.status}</td>
+              <td>{user.createdAt?.toString().slice(4,16)}</td>
+              <td>{user.isAdmin ? "Admin" : "Client"}</td>
+              <td>{user.isActive ? "active" : "passive"}</td>
               <td>
                 <div className="flex gap-2">
-                  <Link href="/dashboard/users/id">
+                  <Link href={`/dashboard/users/${user.id}`}>
                     <button
                       className="flex items-center justify-center px-3 py-1 text-blue-500 border border-blue-500 rounded-md hover:bg-blue-500 hover:text-white"
                       title="View"
