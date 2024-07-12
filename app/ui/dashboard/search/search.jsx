@@ -7,11 +7,13 @@ const Search = ({ placeholder }) => {
   const searchParams = useSearchParams();
   const { replace } = useRouter();
   const pathname = usePathname();
-  console.log(searchParams);
-  console.log(pathname);
+ 
 
   const handleSearch = useDebouncedCallback((e) => {
-    const params = new URLSearchParams();
+    const params = new URLSearchParams(searchParams);
+    // Pagination
+    params.set("page", 1)
+     
     if (e.target.value) {
       e.target.value.length > 2 && params.set("q", e.target.value);
     }else{
