@@ -2,9 +2,11 @@ import mongoose from "mongoose";
 
 export const connect2DB = async () =>{
   // This to always keep the connection alive
-  
+  const connection = {}
   try {
-    await mongoose.connect('mongodb://127.0.0.1:27017/test');
+    if(connection.isConnected) return;
+    await mongoose.connect(process.env.ALXMONGO);
+    connection.isConnected = db.connection[0].readyState
     console.log("Connected to MongoDB");
   } catch (error) {
     console.error("Error connecting to MongoDB:", error.message);
