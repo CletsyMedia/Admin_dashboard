@@ -1,12 +1,16 @@
-"use client"
-import { useState } from "react"
-
 // Server actions
 const Page = () => {
-  const [input, setInput] = useState()
+  const handleForm =()=>{
+    
+  }
   return (
-    <div>Page</div>
-  )
-}
+    <div>
+      <form action={handleForm}>
+        <input type="text" />
+        <button>Send</button>
+      </form>
+    </div>
+  );
+};
 
-export default Page
+export default Page;
