@@ -70,7 +70,7 @@ const ProductsPage = async () => {
 
   return ( 
     <div className="h-screen w-full">
-    <div className="mt-2 bg-bgSoft p-5 rounded-xl">
+    <div className="mt-2 bg-bgSoft p-5 rounded-xl relative h-[66vh]">
       <div className="flex items-center justify-between mb-4">
         <Search placeholder="Search a product..." />
         <Link href="/dashboard/products/add">
@@ -161,7 +161,9 @@ const ProductsPage = async () => {
           ))}
         </tbody>
       </table>
-      <Pagination count={count} />
+      <div className="absolute w-full bottom-2 right-0 left-0 px-4">
+          <Pagination count={count} />
+        </div>
     </div>
     </div>
    );
