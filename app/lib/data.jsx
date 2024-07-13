@@ -5,7 +5,7 @@ import { connect2DB } from "./utils";
 export const fetchingUsers = async (q, page) => {
   const regex = new RegExp(q, "i")
   // Pagination
-  const itemsPerPage = 2;
+  const itemsPerPage = 5;
 
   try {
     connect2DB();
@@ -24,7 +24,7 @@ export const fetchingUsers = async (q, page) => {
 export const fetchingProducts = async (q, page) => {
   const regex = new RegExp(q, "i")
   // Pagination
-  const itemsPerPage = 2;
+  const itemsPerPage = 5;
 
   try {
     connect2DB();

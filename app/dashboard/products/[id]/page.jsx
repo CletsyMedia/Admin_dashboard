@@ -8,7 +8,7 @@ const SingleUser = () => {
             <div className="w-full rounded-md mb-2">
               <img src="/noavatar.png" alt="" className="w-full" />
             </div>
-            Jenny Yang
+            Nike Sneakers
           </div>
         </div>
 
@@ -17,83 +17,82 @@ const SingleUser = () => {
           <form action="" className="">
             <div className="flex flex-col">
               <label htmlFor="username" className="mt-2">
-                Username
+                Title
               </label>
               <input
-                id="username"
+                id="Title"
                 className="input bg-[#2e374a]"
                 type="text"
-                placeholder="Jenny Yang"
+                placeholder="Nike"
                 required
               />
-              <label htmlFor="email" className="mt-2">
-                Email
+              <label htmlFor="price" className="mt-2">
+                Price
               </label>
               <input
-                id="email"
+                id="price"
                 className="input bg-[#2e374a]"
-                type="email"
-                placeholder="jennyyang@gmail.com"
+                type="number"
+                placeholder="$245.00"
                 required
               />
-              <label htmlFor="password" className="mt-2">
-                Password
+              <label htmlFor="stock" className="mt-2">
+                Stock
               </label>
               <input
-                id="password"
+                id="stock"
                 className="input bg-[#2e374a]"
-                type="password"
-                name="password"
-                placeholder="******"
+                type="number"
+                name="stock"
+                placeholder="24"
               />
-              <label htmlFor="phone" className="mt-2">
-                Phone
+              <label htmlFor="color" className="mt-2">
+                Color
               </label>
               <input
-                id="phone"
+                id="color"
                 className="input bg-[#2e374a]"
-                type="tel"
-                name="phone"
-                placeholder="Enter phone"
+                type="text"
+                name="color"
+                placeholder="red"
               />
-              <label htmlFor="address" className="mt-2">
-                Address
+              <label htmlFor="size" className="mt-2">
+                Size
               </label>
               <input
                 type="text"
-                id="address"
-                name="address"
-                placeholder="Address"
+                id="size"
+                name="size"
+                placeholder="size"
                 className="input bg-[#2e374a]"
               />
-              <label htmlFor="isAdmin" className="mt-2">
-                Is Admin?
+              <label htmlFor="category" className="mt-2">
+                Category
               </label>
               <select
-                id="isAdmin"
-                name="isAdmin"
+                id="category"
+                name="category"
                 className="select bg-[#2e374a]"
               >
                 <option value="" disabled hidden selected>
-                  Is Admin?
+                  Phone
                 </option>
-                <option value="true">Yes</option>
-                <option value="false">No</option>
+                <option value="true">Computers</option>
+                <option value="false">Phones</option>
+                <option value="false">Kitchen</option>
+                <option value="false">Men's Wears</option>
               </select>
-              <label htmlFor="isActive" className="mt-2">
-                Is Active?
+              <label htmlFor="Description" className="mt-2">
+                Description
               </label>
-              <select
-                id="isActive"
-                name="isActive"
-                className="select bg-[#2e374a]"
-              >
-                <option value="" disabled hidden selected>
-                  Is Active?
-                </option>
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-              </select>
+              <textarea
+                name="description"
+                id="description"
+                cols={10}
+                rows={4}
+                placeholder="Description"
+                className="resize-none textarea bg-[#2e374a]"
+              ></textarea>
 
               <button
                 type="submit"

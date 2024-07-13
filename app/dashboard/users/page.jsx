@@ -12,7 +12,7 @@ const UsersPage = async ({ searchParams }) => {
 
   return (
     <div className="h-screen w-full">
-      <div className="mt-2 bg-bgSoft relative p-5 rounded-xl h-[66vh]">
+      <div className="mt-2 bg-bgSoft relative p-5 rounded-xl h-[80vh] overflow-x-auto">
         <div className="flex items-center justify-between mb-4">
           <Search placeholder="Search a user.." />
           <Link href="/dashboard/users/add">

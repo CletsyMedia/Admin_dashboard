@@ -1,65 +1,14 @@
 import Link from "next/link";
 import { FiUserPlus, FiEye, FiTrash } from "react-icons/fi";
-import Pagination from "../../ui/dashboard/pagination/pagination";
 import Search from "../../ui/dashboard/search/search";
+import Pagination from "../../ui/dashboard/pagination/pagination";
 import { fetchingProducts } from "../../lib/data";
-import {searchParams} from "next/navigation"
 
-// const ProductData = [
-//   {
-//     id: 1,
-//     title: "Premium Leather Wallet",
-//     description: "Handcrafted premium leather wallet with RFID protection.",
-//     price: 79.99,
-//     created: new Date(2024, 6, 24),
-//     stock: 50,
-//     image: "/wallet.jpg"
-//   },
-//   {
-//     id: 2,
-//     title: "Vintage Wooden Desk Organizer",
-//     description: "Elegant wooden desk organizer with multiple compartments.",
-//     price: 49.99,
-//     created: new Date(2023, 10, 15),
-//     stock: 25,
-//     image: "/desk.jpg"
-//   },
-//   {
-//     id: 3,
-//     title: "Modern Ceramic Plant Pots",
-//     description: "Set of 3 modern ceramic plant pots for indoor and outdoor use.",
-//     price: 29.99,
-//     created: new Date(2022, 3, 5),
-//     stock: 100,
-//     image: "/ceramic.jpg"
-//   },
-//   {
-//     id: 4,
-//     title: "Stylish Stainless Steel Watch",
-//     description: "Premium stainless steel watch with automatic movement.",
-//     price: 199.99,
-//     created: new Date(2023, 7, 12),
-//     stock: 10,
-//     image: "/stainless_watch.jpg"
-//   },
-//   {
-//     id: 5,
-//     title: "Luxury Leather Briefcase",
-//     description: "Luxury leather briefcase with multiple compartments and laptop sleeve.",
-//     price: 299.99,
-//     created: new Date(2024, 1, 28),
-//     stock: 15,
-//     image: "https://source.unsplash.com/500x500/?briefcase,product"
-//   },
-// ];
-
-
-const ProductsPage = async () => {
+const ProductsPage = async ({ searchParams }) => {
   const q = searchParams?.q || "";
   // Pagination if no page 1 by default
   const page = searchParams?.page || 1;
   const { count, products } = await fetchingProducts(q, page);
-
 
   const trimDescription = (description, maxLength) => {
     if (description.length > maxLength) {
@@ -68,19 +17,19 @@ const ProductsPage = async () => {
     return description;
   };
 
-  return ( 
+  return (
     <div className="h-screen w-full">
-    <div className="mt-2 bg-bgSoft p-5 rounded-xl relative h-[66vh]">
-      <div className="flex items-center justify-between mb-4">
-        <Search placeholder="Search a product..." />
-        <Link href="/dashboard/products/add">
-          <button className="flex items-center gap-1 justify-center p-3 rounded-md outline-none border-0 bg-[#5d57c9] hover:bg-opacity-60 text-white">
-            <FiUserPlus />
-            Add New
-          </button>
-        </Link>
-      </div>
-      <table className="table">
+      <div className="mt-2 bg-bgSoft relative p-5 rounded-xl h-[80vh] overflow-x-auto">
+        <div className="flex items-center justify-between mb-4">
+          <Search placeholder="Search a user.." />
+          <Link href="/dashboard/users/add">
+            <button className="flex items-center gap-1 justify-center p-3 rounded-md outline-none border-0 bg-[#5d57c9] hover:bg-opacity-60 text-white">
+              <FiUserPlus />
+              Add New
+            </button>
+          </Link>
+        </div>
+        <table className="table">
         <thead>
           <tr>
             <th>
@@ -133,7 +82,7 @@ const ProductsPage = async () => {
                 </div> */}
               </td>
               <td>${product.price.toFixed(2)}</td>
-              <td>{product.createdAt.toString().slice(4,16)}</td>
+              <td>{product.createdAt?.toString().slice(4,16)}</td>
               <td>{product.stock}</td>
               <td>
                 <div className="flex gap-2">
@@ -161,12 +110,12 @@ const ProductsPage = async () => {
           ))}
         </tbody>
       </table>
-      <div className="absolute w-full bottom-2 right-0 left-0 px-4">
+        <div className="absolute w-full bottom-2 right-0 left-0 px-4">
           <Pagination count={count} />
         </div>
+      </div>
     </div>
-    </div>
-   );
-}
- 
+  );
+};
+
 export default ProductsPage;
