@@ -3,6 +3,7 @@ import { FiUserPlus, FiEye, FiTrash } from "react-icons/fi";
 import Search from "../../ui/dashboard/search/search";
 import Pagination from "../../ui/dashboard/pagination/pagination";
 import { fetchingUsers } from "../../lib/data";
+import { deleteUser } from "../../lib/actions";
 
 const UsersPage = async ({ searchParams }) => {
   const q = searchParams?.q || "";
@@ -81,7 +82,8 @@ const UsersPage = async ({ searchParams }) => {
                         View
                       </button>
                     </Link>
-                    <Link href="/">
+                    <form action={deleteUser}>
+                      <input type="hidden" name="id" value={user.id} />
                       <button
                         className="flex items-center justify-center px-3 py-1 text-red-500 border border-red-500 rounded-md hover:bg-red-500 hover:text-white"
                         title="Delete"
@@ -89,7 +91,7 @@ const UsersPage = async ({ searchParams }) => {
                         <FiTrash className="mr-1" />
                         Delete
                       </button>
-                    </Link>
+                    </form>
                   </div>
                 </td>
               </tr>
