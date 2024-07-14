@@ -1,10 +1,10 @@
-import React from "react";
+import { addProduct } from "../../../lib/actions";
 
 const AddUser = () => {
   return (
     <div className="h-screen w-full py-4">
       <div className="bg-bgSoft p-8 rounded-lg shadow-lg w-full ">
-        <form action="" className="flex flex-col gap-4">
+        <form action={addProduct} className="flex flex-col gap-4">
           <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 gap-4">
           <input
             className="input bg-[#2e374a]" 

@@ -22,7 +22,7 @@ const ProductsPage = async ({ searchParams }) => {
       <div className="mt-2 bg-bgSoft relative p-5 rounded-xl h-[80vh] overflow-x-auto">
         <div className="flex items-center justify-between mb-4">
           <Search placeholder="Search a user.." />
-          <Link href="/dashboard/users/add">
+          <Link href="/dashboard/products/add">
             <button className="flex items-center gap-1 justify-center p-3 rounded-md outline-none border-0 bg-[#5d57c9] hover:bg-opacity-60 text-white">
               <FiUserPlus />
               Add New
