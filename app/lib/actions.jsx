@@ -1,6 +1,7 @@
 "use server";
 import { connect2DB } from "./utils";
 import { User } from "./models";
+import { Product } from "./models";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import bcrypt from "bcrypt";
@@ -44,7 +45,7 @@ export const addProduct = async (formData) => {
     Object.fromEntries(formData);
   try {
     connect2DB();
-    const newUser = new Product({
+    const newProduct = new Product({
       title,
       desc,
       price,
@@ -55,16 +56,10 @@ export const addProduct = async (formData) => {
 
     await newProduct.save();
   } catch (error) {
-    if (error.code === 11000 && error.keyPattern.username) {
-      // Handle duplicate key error (username already exists)
-      console.error(`Product '${product}' already exists.`);
-      throw new Error(`Product '${product}' already exists.`);
-    } else {
-      // Handle other errors
-      console.error("Error creating new product:", error);
-      throw new Error("Failed to create new product");
-    }
+    // Handle other errors
+    console.log("Error creating new product:", error);
+    throw new Error("Failed to create new product");
   }
-  revalidatePath("/dashboard/product");
-  redirect("/dashboard/product");
+  revalidatePath("/dashboard/products");
+  redirect("/dashboard/products");
 };

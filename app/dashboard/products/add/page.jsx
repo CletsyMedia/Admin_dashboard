@@ -1,6 +1,6 @@
 import { addProduct } from "../../../lib/actions";
 
-const AddUser = () => {
+const AddProduct = () => {
   return (
     <div className="h-screen w-full py-4">
       <div className="bg-bgSoft p-8 rounded-lg shadow-lg w-full ">
@@ -9,6 +9,7 @@ const AddUser = () => {
           <input
             className="input bg-[#2e374a]" 
             type="text"
+            name="title"
             placeholder="Title"
             required
             
@@ -73,4 +74,4 @@ const AddUser = () => {
   );
 };
 
-export default AddUser;
+export default AddProduct;
