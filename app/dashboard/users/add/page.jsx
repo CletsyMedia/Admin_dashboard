@@ -1,14 +1,16 @@
 import React from "react";
+import { addUser } from "../../../lib/actions";
 
-const AddProduct = () => {
+const AddUser = () => {
   return (
     <div className="h-screen w-full py-4">
       <div className="bg-bgSoft p-8 rounded-lg shadow-lg w-full ">
-        <form action="" className="flex flex-col gap-4">
+        <form action={addUser} className="flex flex-col gap-4">
           <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 gap-4">
           <input
             className="input bg-[#2e374a]" 
             type="text"
+            name="username"
             placeholder="Username"
             required
             
@@ -16,6 +18,7 @@ const AddProduct = () => {
           <input
             className="input bg-[#2e374a]" 
             type="email"
+            name="email"
             placeholder="Enter email"
             required
             
@@ -36,8 +39,8 @@ const AddProduct = () => {
             placeholder="Enter phone"
           />
           <select
-            name="category"
-            id="category"
+            name="isAdmin"
+            id="isAdmin"
             className="select bg-[#2e374a]"
           >
             <option value={false} disabled hidden selected>Is Admin?</option>
@@ -46,8 +49,8 @@ const AddProduct = () => {
             
           </select>
           <select
-            name="category"
-            id="category"
+            name="isActive"
+            id="isActive"
             className="select bg-[#2e374a]"
           >
             <option value={true} disabled hidden selected>Is Active?</option>
@@ -76,4 +79,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default AddUser;
