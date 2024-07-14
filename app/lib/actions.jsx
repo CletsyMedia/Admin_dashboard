@@ -39,6 +39,44 @@ export const addUser = async (formData) => {
   revalidatePath("/dashboard/users");
   redirect("/dashboard/users");
 };
+// Delet user
+export const deleteUser = async (formData) => {
+  const {id} =
+    Object.fromEntries(formData);
+  try {
+    connect2DB();
+    await User.findByIdAndDelete(id)
+  } catch (error) {
+    // Handle other errors
+    console.log("Error deleting user:", error);
+    throw new Error("Failed to delete user");
+  }
+  revalidatePath("/dashboard/users");
+};
+
+// Updating user
+export const updateUser = async (formData) => {
+  const { id, username, email, password, phone, address, isAdmin, isActive } =
+    Object.fromEntries(formData);
+  try {
+    connect2DB();
+    const updateFields = {
+      username, email, password, phone, address, isAdmin, isActive
+    };
+
+    Object.keys(updateFields).forEach((key) => (updateFields[key] === "" || undefined) && delete updateFields[key]
+  )
+    await User.findByIdAndUpdate(id, updateFields);
+  } catch (error) {
+    console.log("Error updating user's details", error);
+    throw new Error("Failed to update user's details");
+  }
+  revalidatePath("/dashboard/users");
+  redirect("/dashboard/users");
+};
+
+
+
 // Add product
 export const addProduct = async (formData) => {
   const { title, desc, price, stock, color, size } =
@@ -76,18 +114,4 @@ export const deleteProduct = async (formData) => {
     throw new Error("Failed to delete product");
   }
   revalidatePath("/dashboard/products");
-};
-// Delet user
-export const deleteUser = async (formData) => {
-  const {id} =
-    Object.fromEntries(formData);
-  try {
-    connect2DB();
-    await User.findByIdAndDelete(id)
-  } catch (error) {
-    // Handle other errors
-    console.log("Error deleting user:", error);
-    throw new Error("Failed to delete user");
-  }
-  revalidatePath("/dashboard/users");
 };

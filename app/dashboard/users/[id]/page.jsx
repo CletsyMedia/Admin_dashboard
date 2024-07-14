@@ -1,4 +1,8 @@
-const SingleUser = () => {
+import { updateUser } from "../../../lib/actions";
+import { fetchUser } from "../../../lib/data";
+const SingleUser = async ({ params }) => {
+  const { id } = params;
+  const user = await fetchUser(id);
   return (
     <div className="h-screen w-full py-4 mb-28 sm:h-screen">
       <div className="flex flex-col lg:flex-row md:flex-row sm:flex-col w-full gap-4 bg-bg rounded-l-md">
@@ -6,15 +10,21 @@ const SingleUser = () => {
         <div className="w-[30%]">
           <div className="avatar flex flex-col bg-bgSoft p-4 rounded-md cursor-pointer">
             <div className="w-full rounded-md mb-2">
-              <img src="/noavatar.png" alt="" className="w-full" />
+              {/* <Image src={user.img || "/noavatar.png"} alt="" width={30} height={50} /> */}
+              <img
+                src={user.img || "/noavatar.png"}
+                alt="avatar"
+                className="w-full"
+              />
             </div>
-            Jenny Yang
+            <p>{user.username}</p>
           </div>
         </div>
 
         {/* Form section */}
         <div className="lg:w-[70%] md:w-[70%] sm:w-full bg-bgSoft p-4 rounded-l-md">
-          <form action="" className="">
+          <form action={updateUser} className="">
+            <input type="hidden" name="id" value={user.id}/>
             <div className="flex flex-col">
               <label htmlFor="username" className="mt-2">
                 Username
@@ -23,7 +33,7 @@ const SingleUser = () => {
                 id="username"
                 className="input bg-[#2e374a]"
                 type="text"
-                placeholder="Jenny Yang"
+                placeholder={user.username}
                 required
               />
               <label htmlFor="email" className="mt-2">
@@ -33,7 +43,7 @@ const SingleUser = () => {
                 id="email"
                 className="input bg-[#2e374a]"
                 type="email"
-                placeholder="jennyyang@gmail.com"
+                placeholder={user.email}
                 required
               />
               <label htmlFor="password" className="mt-2">
@@ -54,7 +64,7 @@ const SingleUser = () => {
                 className="input bg-[#2e374a]"
                 type="tel"
                 name="phone"
-                placeholder="Enter phone"
+                placeholder={user.phone}
               />
               <label htmlFor="address" className="mt-2">
                 Address
@@ -63,7 +73,7 @@ const SingleUser = () => {
                 type="text"
                 id="address"
                 name="address"
-                placeholder="Address"
+                placeholder={user.address}
                 className="input bg-[#2e374a]"
               />
               <label htmlFor="isAdmin" className="mt-2">
