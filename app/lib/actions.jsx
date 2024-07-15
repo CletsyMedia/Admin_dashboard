@@ -121,3 +121,9 @@ export const deleteProduct = async (formData) => {
   }
   revalidatePath("/dashboard/products");
 };
+
+
+// Login action
+export const authenticate = async (formData)=>{
+  
+}
