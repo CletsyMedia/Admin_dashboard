@@ -5,6 +5,7 @@ import { Product } from "./models";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import bcrypt from "bcrypt";
+import { signIn } from "../auth";
 
 export const addUser = async (formData) => {
   const { username, email, password, phone, address, isAdmin, isActive } =
@@ -124,6 +125,12 @@ export const deleteProduct = async (formData) => {
 
 
 // Login action
-export const authenticate = async (formData)=>{
+// export const authenticate = async (formData)=>{
+//   const {username, password} = Object.fromEntries(formData)
   
-}
+//   try {
+//     await signIn("credentials", {username, password})
+//   } catch (error) {
+//     throw error;
+//   }
+// }
