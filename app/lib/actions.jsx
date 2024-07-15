@@ -41,11 +41,10 @@ export const addUser = async (formData) => {
 };
 // Delet user
 export const deleteUser = async (formData) => {
-  const {id} =
-    Object.fromEntries(formData);
+  const { id } = Object.fromEntries(formData);
   try {
     connect2DB();
-    await User.findByIdAndDelete(id)
+    await User.findByIdAndDelete(id);
   } catch (error) {
     // Handle other errors
     console.log("Error deleting user:", error);
@@ -58,15 +57,25 @@ export const deleteUser = async (formData) => {
 export const updateUser = async (formData) => {
   const { id, username, email, password, phone, address, isAdmin, isActive } =
     Object.fromEntries(formData);
+  console.log("Updating user with id:", id);
   try {
     connect2DB();
     const updateFields = {
-      username, email, password, phone, address, isAdmin, isActive
+      username,
+      email,
+      password,
+      phone,
+      address,
+      isAdmin,
+      isActive,
     };
 
-    Object.keys(updateFields).forEach((key) => (updateFields[key] === "" || undefined) && delete updateFields[key]
-  )
+    Object.keys(updateFields).forEach(
+      (key) =>
+        (updateFields[key] === "" || undefined) && delete updateFields[key]
+    );
     await User.findByIdAndUpdate(id, updateFields);
+    console.log("User updated successfully");
   } catch (error) {
     console.log("Error updating user's details", error);
     throw new Error("Failed to update user's details");
@@ -74,8 +83,6 @@ export const updateUser = async (formData) => {
   revalidatePath("/dashboard/users");
   redirect("/dashboard/users");
 };
-
-
 
 // Add product
 export const addProduct = async (formData) => {
@@ -103,11 +110,10 @@ export const addProduct = async (formData) => {
 };
 // Delet product
 export const deleteProduct = async (formData) => {
-  const {id} =
-    Object.fromEntries(formData);
+  const { id } = Object.fromEntries(formData);
   try {
     connect2DB();
-    await Product.findByIdAndDelete(id)
+    await Product.findByIdAndDelete(id);
   } catch (error) {
     // Handle other errors
     console.log("Error deleting product:", error);

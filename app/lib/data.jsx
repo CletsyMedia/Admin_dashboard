@@ -56,7 +56,7 @@ export const fetchingProducts = async (q, page) => {
 
 
 // View product
-export const fetchProduct = async () => {
+export const fetchProduct = async (id) => {
   try {
     connect2DB();
     const product = await Product.findById(id);

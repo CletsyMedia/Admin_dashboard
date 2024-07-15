@@ -1,7 +1,9 @@
 import { updateUser } from "../../../lib/actions";
 import { fetchUser } from "../../../lib/data";
+
 const SingleUser = async ({ params }) => {
-  const { id } = params;
+
+  const {id} = params;
   const user = await fetchUser(id);
   return (
     <div className="h-screen w-full py-4 mb-28 sm:h-screen">
@@ -23,9 +25,8 @@ const SingleUser = async ({ params }) => {
 
         {/* Form section */}
         <div className="lg:w-[70%] md:w-[70%] sm:w-full bg-bgSoft p-4 rounded-l-md">
-          <form action={updateUser} className="">
+          <form action={updateUser} className="flex flex-col">
             <input type="hidden" name="id" value={user.id}/>
-            <div className="flex flex-col">
               <label htmlFor="username" className="mt-2">
                 Username
               </label>
@@ -87,8 +88,8 @@ const SingleUser = async ({ params }) => {
                 <option value="" disabled hidden selected>
                   Is Admin?
                 </option>
-                <option value="true">Yes</option>
-                <option value="false">No</option>
+                <option value="true" selected={user.isAdmin}>Yes</option>
+                <option value="false" selected={!user.isAdmin}>No</option>
               </select>
               <label htmlFor="isActive" className="mt-2">
                 Is Active?
@@ -101,17 +102,15 @@ const SingleUser = async ({ params }) => {
                 <option value="" disabled hidden selected>
                   Is Active?
                 </option>
-                <option value="true">Yes</option>
-                <option value="false">No</option>
+                <option value="true" selected={user.isActive}>Yes</option>
+                <option value="false" selected={!user.isActive}>No</option>
               </select>
 
               <button
-                type="submit"
                 className="btn bg-teal-700 text-white hover:bg-teal-700 hover:opacity-85 mt-2"
               >
                 Update
               </button>
-            </div>
           </form>
         </div>
       </div>

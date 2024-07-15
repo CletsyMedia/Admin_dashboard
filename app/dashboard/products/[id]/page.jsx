@@ -1,4 +1,8 @@
-const SingleUser = () => {
+import { fetchProduct } from "../../../lib/data";
+
+const SingleProduct = async ({params}) => {
+  const {id} = params;
+  const product = await fetchProduct(id);
   return (
     <div className="h-screen w-full py-4 mb-28 sm:h-screen">
       <div className="flex flex-col lg:flex-row md:flex-row sm:flex-col w-full gap-4 bg-bg rounded-l-md">
@@ -8,7 +12,7 @@ const SingleUser = () => {
             <div className="w-full rounded-md mb-2">
               <img src="/noavatar.png" alt="" className="w-full" />
             </div>
-            Nike Sneakers
+            {product.title}
           </div>
         </div>
 
@@ -108,4 +112,4 @@ const SingleUser = () => {
   );
 };
 
-export default SingleUser;
+export default SingleProduct;
