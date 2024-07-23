@@ -10,7 +10,7 @@ const SingleProduct = async ({params}) => {
         <div className="w-[30%]">
           <div className="avatar flex flex-col bg-bgSoft p-4 rounded-md cursor-pointer">
             <div className="w-full rounded-md mb-2">
-              <img src="/noavatar.png" alt="" className="w-full" />
+              <img src={product.img || "/noavatar.png"} alt="" className="w-full" />
             </div>
             {product.title}
           </div>
